@@ -4,17 +4,13 @@ require.config({
     // 新版本支持amd加载
     zepto: {
       exports: '$'
-    },
-    backbone: {
-      deps: ['underscore', 'zepto']      
     }
   },
   paths: {
-    'zepto': 'h5/lib/zepto',
-    'ImageUpload': 'h5/widget/imgUpload',
-    'text': 'h5/lib/text',
-    'underscore': 'h5/lib/underscore',
-    'util': 'h5/widget/util'
+    'zepto': 'h5/vendor/zepto',
+    'ImageUpload': 'h5/lib/imgUpload',
+    'text': 'h5/vendor/text',
+    'underscore': 'h5/vendor/underscore',
   }
 });
 
@@ -37,5 +33,7 @@ var eventName = 'orientationchange' in window ? 'orientationchange' : 'resize';
 
 window.addEventListener(eventName, calculate);
 calculate();
-
-
+//启动
+requirejs(['underscore', 'zepto'], function () {
+  requirejs(['controller/index']);
+});
