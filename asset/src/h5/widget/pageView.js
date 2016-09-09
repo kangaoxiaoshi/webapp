@@ -11,8 +11,14 @@ define([
         class:'page'
       },
       initialize: function (template, data) {
+        
         this.onCreate();
       },
+      // setElement: function(element) {
+      //   this._setElement(element);
+      //   return this;
+      // },
+      onCreate: _.noop,
       //模板操作
       template: function (template, data) {
         if (util.type(data) === "String") {
@@ -22,6 +28,5 @@ define([
         return _.template(template)(data);
       }
     });
-    
     return PageView;
   })

@@ -7,7 +7,14 @@ define([
   ) {
   var lazy = {
     start: function () {
-
+      new Rotuter();
+     // Start Backbone app
+      Backbone.history.start({
+        // 设置根路径
+        root: config.baseUrl,
+        // 启用pushState
+        pushState: true
+      });
     },
   };
   //路由
@@ -15,10 +22,11 @@ define([
     initialize: function () {
       this.firstLoad = true;
       this.main = $('#main');
-      var startFun = _.throttle(this.routerAction, 400); 
-      this.route('*path', 'startFun');
+      this.throttle = _.throttle(this.routerAction, 401); 
+      this.route('*path', 'throttle');
     },
     routerAction: function () {
+      
       var self = this, query = void 0, 
           ctrl =void 0,
           fragment = Backbone.history.fragment,
@@ -31,14 +39,28 @@ define([
         query = fragment.slice(queryIndex + 1);
       }
 
+      if (!ctrl) {
+        ctrl = "index";
+      }
+
       var ctrSrc = 'controller/' + ctrl;
       query = util.getQuery(query);
-      require([ctrlSrc], function(View) {
+      require([ctrSrc], function(View) {
         self.loadCtrl(View, ctrl, query)
       });
     },
     loadCtrl: function(View, ctrl, query) {
+      if (!this.firstLoad) {
+        app.prevView = app.currentPage;
+      }
+     
+      var view = new View({
+        query: query,
+        ctrlName: ctrl
+      });
+      app.currentPage = View;
       //这里处理你的逻辑，比如 动画什么的
+      
       this.main.append(View.el);
     }
     
