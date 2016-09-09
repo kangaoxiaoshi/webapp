@@ -58,10 +58,10 @@ define([
         query: query,
         ctrlName: ctrl
       });
-      app.currentPage = View;
+      app.currentPage = view;
       //这里处理你的逻辑，比如 动画什么的
-      
-      this.main.append(View.el);
+      debugger;
+      this.main.append(view.el);
     }
     
   });

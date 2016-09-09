@@ -18,7 +18,8 @@ require.config({
     'util': 'h5/widget/util',
     'lazy': 'h5/widget/lazy',
     'pageView': 'h5/widget/pageView',
-    'backbone': 'h5/lib/backbone'
+    'backbone': 'h5/lib/backbone',
+    'text': 'h5/lib/text',
   }
 });
 

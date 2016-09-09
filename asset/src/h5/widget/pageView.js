@@ -26,6 +26,9 @@ define([
         }
 
         return _.template(template)(data);
+      },
+      pageRemove: function () {
+        
       }
     });
     return PageView;

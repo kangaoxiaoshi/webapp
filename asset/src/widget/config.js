@@ -14,6 +14,7 @@ var requirejs = {
   //urlArgs: Date.now(),
   //urlArgs: 3,
   paths: {
+    'indexHtml': 'template/index.html'
   }
 };
 
