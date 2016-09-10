@@ -1,6 +1,6 @@
 define([
 	'pageView',
-	'text!teacherGreenHtml'
+	'text!teacherIndexGreenHtml'
 	], function (
 		pageView,
 		template

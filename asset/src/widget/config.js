@@ -6,7 +6,9 @@ var config = {
   routesList: [
     'index',
     'teacher/index',
-    'teacher/green'
+    'teacher/indexgreen',
+    'teacher/detail',
+    'teacher/detailgreen'
   ],
   support: {
     storage: true
@@ -19,7 +21,9 @@ var requirejs = {
   paths: {
     'indexHtml': 'template/index.html',
     'teacherIndexHtml': 'template/teacher/index.html',
-    'teacherGreenHtml': 'template/teacher/green.html'
+    'teacherIndexGreenHtml': 'template/teacher/indexgreen.html',
+    'teacherDetailHtml': 'template/teacher/detail.html',
+    'teacherDetailGreenHtml': 'template/teacher/detailgreen.html'
   }
 };
 

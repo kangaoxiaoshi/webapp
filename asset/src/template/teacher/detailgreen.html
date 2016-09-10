@@ -1,0 +1,415 @@
+<div class="page-content tdg-page-cont">
+	<style type="text/css">
+		.tdg-page-cont {
+			background-color: #eaeaea;
+		}
+		.tdg-top {
+			width: 100%;
+			overflow: hidden;
+			height: 2.25rem;
+			background: url(/webapp/asset/src/img/banner.png) no-repeat;
+			background-size: 3.75rem 1.75rem;
+			text-align: center;
+			position: relative;
+		}	
+		.tdg-name {
+			margin-top: 1.3rem;
+			font-size: .22rem;
+			color: #fff;
+		}
+		.tdg-position {
+			color: #676767;
+			background-color: #fff;
+			border: 1px #676767 solid;
+			display: inline-block;
+			padding: .05rem .15rem;
+			border-radius: .4rem;
+			font-size: .15rem;
+			margin: .1rem auto;
+		}
+		.tdg-company {
+			color: #676767;
+			font-size: .15rem;
+		}
+		.tdg-tabel {
+			width: 94.67%;
+			margin: .05rem auto .1rem auto;
+			border:1px #cccccc solid;
+			color: #666;
+			text-align: center;
+			padding: .15rem 0;
+		}
+		.tdg-tabel-flex {
+			border-right: 1px #ccc solid;
+		}
+		.tdg-tabel-flex2 {
+			border-right: 0;
+		}
+		.tdg-invite::after {
+			font-family: 'iconfont';
+		    content: "\e601";
+		    font-size: .15rem;
+		}
+		.tdg-guide::after {
+			font-family: 'iconfont';
+		    content: "\e602";
+		    font-size: .15rem;
+		}
+		.tdg-love::after {
+			font-family: 'iconfont';
+		    content: "\e603";
+		    font-size: .15rem;
+		}
+		.tdg-num {
+			font-size: .2rem;
+			font-weight: bold;
+			color: #48BBF1;
+		}
+		.tdg-top-love {
+			position: absolute;
+			right: .3rem;
+			top: 1.3rem;
+		}
+		.tdg-top-love::after {
+			font-family: 'iconfont';
+		    content: "\e603";
+		    font-size: .15rem;
+		    color: #48bbf1;
+		}
+		.tdg-top-love.active::after {
+			color: #ffa130;
+		}
+		.tdg-goodat {
+			width: 94.67%;
+			margin: 0 auto;
+			background-color: #fff;
+			border: 1px #d8d8d8 solid;
+		}
+		.tdg-goodat-title {
+			font-size: .15rem;
+			padding: .1rem;
+			border-bottom: 1px #d8d8d8 solid;
+		}
+		.tdg-goodat-cont {
+			padding: .1rem;
+		}
+		.tdg-goodat-item {
+			background-color: #f6f6f6;
+			color: #afafaf;
+			display: inline-block;
+			padding: .08rem;
+			margin-right: .1rem;
+		}
+		.tdg-aboutme {
+			width: 94.67%;
+			margin: 0 auto;
+		}
+		.tdg-aboutme-title, .tdg-student-title {
+			font-size: .15rem;
+			padding: .1rem;
+		}
+		.tdg-aboutme-cont {
+			padding: .05rem;
+			background-color: #fff;
+			border: 1px #d8d8d8 solid;
+		}
+		.tdg-my-pic {
+			width: 100%;
+		}
+		.tdg-close {
+			text-align: right;
+			color: #48BBF1;
+		}
+		.tdg-more {
+			background-color: #f0f0f0;
+			color: #9f9f9f;
+			padding: .1rem 0;
+			text-align: center;
+			border:#d8d8d8 solid;
+			border-width: 0 1px 1px 1px;
+			width: 94.67%;
+			margin: 0 auto;
+		}
+		.tdg-student-cont {
+			background-color: #fff;
+			width: 94.67%;
+			margin: 0 auto;
+			border: 1px #d8d8d8 solid;
+		}
+		.tdg-student-top {
+			position: relative;
+			padding: .17rem 0 .1rem .54rem;
+		}
+		.tdg-student-pic {
+			position: absolute;
+			left: .08rem;
+			width: .35rem;
+			height: .35rem;
+			border-radius: 50%;	
+			top: .1rem;
+		}
+		.tdg-student-name {
+			font-size: .2rem;
+		}
+		.tdg-student-major {
+			font-size: .14rem;
+			color: #929292;
+		}
+		.tdg-msg-time {
+			color: #d4d4d4;
+			text-align: right;
+			line-height: 1;
+			padding-right: .1rem;
+		}
+		.tdg-triangle {
+			margin-left: .3rem;
+		    line-height: 1;
+		    margin-top: -.1rem;
+		}
+		.tdg-triangle::after {
+			font-family: 'iconfont';
+		    content: "\e604";
+		    font-size: .15rem;
+		    color: #f6f6f6;
+		}
+		.tdg-student-msg {
+			width: 95%;
+			background-color: #f6f6f6;
+			margin: 0 auto;
+			padding: .08rem .1rem;
+		}
+		.tdg-join-activity {
+			padding: .1rem .15rem;
+		}
+		.tdg-experience {
+			background-color: #fff;
+			width: 94.67%;
+			margin: .1rem auto 0 auto;
+		}
+		.tdg-experience-title {
+			font-size: .15rem;
+		    padding: .1rem;
+		    border-bottom: 1px #d8d8d8 solid;
+		    color: #a8a8a8;
+		}
+		.tdg-experience-item{
+			position: relative;
+			padding: .15rem .1rem .15rem .62rem;
+		}
+		.tdg-experience-pic {
+			position: absolute;
+			left: .1rem;
+			width: .4rem;
+			height: .4rem;
+		}
+		.tdg-item-title {
+			font-size: .2rem;
+		}
+		.tdg-item-cont {
+			margin-top: .05rem;
+		}
+		.tdg-experience-label, .tdg-experience-detail {
+			float: right;
+			color: #48BBF1;
+		}
+		.tdg-experience-label2 {
+			color: #48BBF1;;
+		}
+		.tdg-experience-time {
+			color: #cecece;
+		}
+		.tdg-experience-time::before {
+			font-family: 'iconfont';
+		    content: "\e605";
+		    font-size: .15rem;
+		}
+		.tdg-placeholder {
+			height: .8rem;
+		}
+		.tdg-btn {
+			background-color: #48bbf1;
+			border: 1px #48bbf1 solid;
+			color: #fff;
+		}
+		.tdg-project-list {
+			background-color: #fff;
+			position: absolute;
+			bottom: 0;
+			width: 94.67%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.tdg-project-ul li{
+			padding: .1rem ;
+			font-size: .18rem;
+			
+		}
+		.tdg-safe {
+			color: #48BBF1;
+		}
+		.tdg-safe::before {
+			font-family: 'iconfont';
+		    content: "\e606";
+		    font-size: .15rem;
+		}
+		.tdg-choose {
+			float: right;
+		}
+		.tdg-choose::after {
+			font-family: 'iconfont';
+		    content: "\e607";
+		    font-size: .15rem;
+		    color: #C9C9C9;
+		}
+		.tdg-choose.active::after {
+			font-family: 'iconfont';
+		    content: "\e608";
+		    font-size: .17rem;
+		    color: #48BBF1;
+		}
+		.tdg-btn-bg {
+			padding: .07rem .15rem;
+		    background-color: #f8f8f8;
+		    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
+		    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
+		}
+	</style>
+	<div class="tdg-top">
+		<div class="tdg-name">李一芬</div>
+		<div class="tdg-position">营销部总裁</div>
+		<div class="tdg-company">华为科技有限公司</div>
+		<div class="tdg-top-love"></div>  <!--喜欢按钮，加active-->
+	</div>
+	<div class="tdg-tabel">
+		<div class="flex-wrap">
+			<div class="flex tdg-tabel-flex">
+				<div class="tdg-item font-s">
+					<span class="tdg-invite"></span>
+					收到邀请
+				</div>
+				<div class="tdg-num">
+					60
+				</div>
+			</div>
+			<div class="flex tdg-tabel-flex">
+				<div class="tdg-item font-s">
+					<span class="tdg-guide"></span>
+					指导过**人成长
+				</div>
+				<div class="tdg-num">
+					60
+				</div>
+			</div>
+			<div class="flex tdg-tabel-flex tdg-tabel-flex2">
+				<div class="tdg-item font-s">
+					<span class="tdg-love"></span>
+					受关注
+				</div>
+				<div class="tdg-num">
+					60
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tdg-goodat">
+		<div class="tdg-goodat-title">
+			个人擅长领域
+		</div>
+		<div class="tdg-goodat-cont">
+			<div class="tdg-goodat-item">
+				计算机
+			</div>
+			<div class="tdg-goodat-item">
+				计算机
+			</div>
+		</div>
+	</div>
+	<div class="tdg-aboutme">
+		<div class="tdg-aboutme-title">
+			关于我
+		</div>
+		<div class="tdg-aboutme-cont">
+			<img class="tdg-my-pic" src="/webapp/asset/src/img/my.png" alt="图片" />
+			<div class="tdg-my-intro">
+				关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍关于我的介绍
+			</div>
+			<div class="tdg-close">收起</div>
+		</div>
+	</div>
+	<div class="tdg-more">查看更多简历</div>
+	
+	<div class="tdg-student">
+		<div class="tdg-student-title">
+			学生留言
+		</div>
+		<div class="tdg-student-cont">
+			<div class="tdg-student-top">
+				<img class="tdg-student-pic" src="/webapp/asset/src/img/teacher.png"/>
+				<span class="tdg-student-name">张梅梅</span>
+				<span class="tdg-student-major">16级  食品工程</span>
+				<div class="tdg-msg-time font-xs">2015-06-02</div>
+			</div>
+			<div class="tdg-triangle"></div>
+			<div class="tdg-student-msg fix-content">
+				啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
+			</div>
+			<div class="tdg-join-activity">
+				参与活动：社团
+			</div>
+		</div>
+	</div>
+	<div class="tdg-more">
+		查看18条评价
+	</div>
+	
+	<div class="tdg-experience">
+		<div class="tdg-experience-title">
+			项目经历
+		</div>
+		<div class="tdg-experience-item">
+			<img class="tdg-experience-pic" src="" alt="图片" />
+			<div class="tdg-item-title">
+				微信公众号推广研究
+				<span class="tdg-experience-label">
+					实训
+				</span>
+			</div>
+			<div class="tdg-item-cont">
+				<span class="tdg-experience-label2">平台项目</span>
+				<span class="tdg-experience-time">2015-06-02</span>
+				<span class="tdg-experience-detail">详情>>></span>
+			</div>
+		</div>
+	</div>
+	<div class="tdg-more">
+		查看全部
+	</div>
+	<div class="tdg-placeholder"></div>
+</div>
+<div class="page-bottom">
+	<div class="fixed-bottom-white-bg">
+		<button class="btn btn-block tdg-btn">邀请他参加项目</button>
+	</div>
+</div>
+<div class="black-overlay">
+	<div class="tdg-project-list">
+		<div class="tdg-experience-title">
+			我的项目列表
+		</div>
+		<ul class="tdg-project-ul">
+			<li>
+				微信营销之旅 
+				<span class="tdg-safe font-xs">平台项目</span>
+				<span class="tdg-choose"></span> <!--选中添加active-->
+			</li>
+			<li>
+				微信营销之旅 
+				<span class="tdg-safe font-xs">平台项目</span>
+				<span class="tdg-choose active"></span> <!--选中添加active-->
+			</li>
+		</ul>
+		<div class="tdg-btn-bg">
+			<button class="btn btn-block tdg-btn">请选择项目</button> <!--不可点击disable=disable-->
+		</div>
+	</div>
+</div>

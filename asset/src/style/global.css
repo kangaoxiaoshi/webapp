@@ -858,7 +858,7 @@ a {
 	bottom: 0;
 	left: 0;
 	z-index: 200;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .vertical-center {
