@@ -13,7 +13,6 @@ require.config({
   paths: {
     'zepto': 'h5/lib/zepto',
     'ImageUpload': 'h5/widget/imgUpload',
-    'text': 'h5/lib/text',
     'underscore': 'h5/lib/underscore',
     'util': 'h5/widget/util',
     'lazy': 'h5/widget/lazy',

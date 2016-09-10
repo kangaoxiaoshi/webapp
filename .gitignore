@@ -1,0 +1,11 @@
+node_modules/
+e.html
+asset/dest/
+./index.html
+lcb.cache
+zip/
+
+web.config
+
+asset/src/h5/
+asset/src/images/
