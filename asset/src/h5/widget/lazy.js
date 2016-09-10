@@ -129,6 +129,7 @@ define([
       this.main.append(view.el);
       app.loadPage(view);
       if (app.preView) {
+        
         //之前页面删除
         app.preView._pageRemove();
       }

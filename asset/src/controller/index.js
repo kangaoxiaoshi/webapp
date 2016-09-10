@@ -13,7 +13,8 @@ define([
 			},
 
 			events: {
-				'click .js-more': 'moreAction'
+				'click .js-more': 'moreAction',
+				'click .js-teacher': 'teacherAction'
 			},
 			ajax: function  () {
 				// 最新导师
@@ -58,6 +59,13 @@ define([
 						Password: "123456789"
 					}
 				});
+			},
+			teacherAction: function (e) {
+				var target = $(e.currentTarget);
+				var id = target.data("id");
+				if (id) {
+					app.goTo('teacher/detail?id=' + id);
+				}
 			}
 		});
 		

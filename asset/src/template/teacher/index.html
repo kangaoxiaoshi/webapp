@@ -106,7 +106,7 @@
 				最新导师
 		</div>
 		<%_.each(defaults, function (item) {%>
-			<div class="ti-new-teacher">
+			<div class="ti-new-teacher js-teacher" data-id="<%=item.teacherId%>">
 				<!-- <img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /> -->
 				<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="<%=item.avatar%>" alt="导师图片" />
 				<div class="ti-newteacher-intro">
