@@ -27,8 +27,10 @@ define([
 
         return _.template(template)(data);
       },
-      pageRemove: function () {
-        
+
+      _pageRemove: function () {
+        this.undelegateEvents();
+        this.remove();
       }
     });
     return PageView;
