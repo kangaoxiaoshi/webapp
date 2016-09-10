@@ -926,7 +926,7 @@ a {
 .btn {
 	padding: .05rem .1rem;
 	border: 1px #ffa130 solid;
-	border-radius: .05rem;
+	border-radius: .03rem;
 	background-color: #fff;
 	color: #ffa130;
 	text-align: center;
@@ -980,17 +980,9 @@ a {
 	background-color: #cacaca;
 	color: #fff;
 }
-
-.fixed-bottom-primary-bg {
-	padding: .1rem .15rem;
-	background-color: #fff;
-	-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
-	box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
-}
-
 .fixed-bottom-white-bg {
-	padding: .14rem .15rem;
-	background-color: #fff;
+	padding: .07rem .15rem;
+	background-color: #f8f8f8;
 	-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
 	box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
 }

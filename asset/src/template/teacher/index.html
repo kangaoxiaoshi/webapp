@@ -47,6 +47,12 @@
 		    color: #ffa032;
 		    margin: 0 .03rem;
 		}
+		.ti-diamond::after {
+			font-family: 'iconfont';
+		    content: "\e600";
+		    font-size: .15rem;
+		    color: #ffa032;
+		}
 	</style>
 	<div class="ti-box">
 		<div class="ti-title">
@@ -56,6 +62,7 @@
 			<div class="flex ti-flex">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" />
 				张一山
+				<span class="ti-diamond"></span>    <!--是否显示钻石-->
 			</div>
 			<div class="flex ti-flex">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
@@ -120,7 +127,7 @@
 	</div>
 </div>
 <div class="page-bottom">
-	<div class="fixed-bottom-white-bg">
+	<div class="fixed-bottom-bg">
 		<button class="btn btn-block btn-primary">更多导师</button>
 	</div>
 </div>
