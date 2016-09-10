@@ -43,22 +43,45 @@ define([
         params.data = {};
       }
       params.url = config.gateway + params.url;
+      //params.url = "http://m.lechebang.cn/gateway/home/getHomeData";
       params.type = params.type || 'post';
       params.timeout =  params.timeout || 10000;
+      params.dataType= 'JSONP';
+      //params.contentType= "application/x-www-form-urlencoded";
+      
       params.success = function(data, status, xhr) { 
-        if (params.success) {
-          params.success(data, status, xhr, options.data);
-        }
-      },
-      params.error = function(xhr, errorType, error) {
-        if (params.error) {
-          params.error();
-        } else {
-          app.alert('网络出错，请稍后再试');
-        }
-      }
+        
+      };      
 
       return $.ajax(params);
+
+        // var xhr = new XMLHttpRequest();
+        // var fd;        
+        
+        // fd = new FormData();
+        // var self = this;
+
+        // xhr.open("POST", params.url, true);
+        
+        // xhr.onreadystatechange = function() {
+        //   if (xhr.readyState == 4) {
+        //     if (xhr.status == 200) {
+        //       var res = JSON.parse(xhr.responseText);
+        //       if (params.success) {
+        //         params.success(data, status, xhr, options.data);
+        //       }
+        //     } else {
+        //       //options.onError();
+        //     }
+        //   }
+        // };                
+        
+        // for (var i in params.data) {        
+        //   fd.append(i, params.data[i]);
+        // }       
+        // xhr.send(fd);
+        
+        //return xhr;
     },
     goBack: function (url, options) {
       options = _.extend({
@@ -73,6 +96,18 @@ define([
       } else {
         Backbone.history.navigate(url, options);
       }
+    },
+    goTo: function(url, options) {
+      options = _.extend({
+          trigger: true,
+          replace: true,
+          cache: true,
+          animate: true
+      }, options);
+
+      
+      Backbone.history.navigate(url, options);
+      
     }
   };
   //路由
@@ -112,7 +147,7 @@ define([
      
     },
     loadCtrl: function(View, ctrl, query) {
-      debugger;
+      
       if (!this.firstLoad) {
         app.preView = app.currentPage;
       }

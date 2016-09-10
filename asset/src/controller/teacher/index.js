@@ -13,14 +13,15 @@ define([
 			},
 
 			events: {
-				'click .js-alert': 'alertAction'
+				'click .js-go': 'goAction'
 			},
 		
 			onShow: function (data) {
 				
 			},
-			alertAction: function () {
-				alert('ok');
+			goAction: function () {
+				debugger;
+				app.goTo('teacher/index');
 			}
 		});
 		

@@ -17,7 +17,9 @@ define([
 			},
 			ajax: function  () {
 				var obj = {
-					url : 'user/teacherServlet.do?flag=getRecommendTeachers',
+					//http://120.24.1.97/shibufangcao/student/projectServlet.do?flag=u
+					url : 'user/teacherServlet.do?flag=getTeacherList',
+					//url: 'shibufangcao/student/projectServlet.do?flag=uploadPicture',
 					data: {
 						pageNum: 1,
 						pageSize: 10
@@ -29,7 +31,7 @@ define([
 				
 			},
 			alertAction: function () {
-				alert('ok');
+				app.goTo('teacher/index');
 			}
 		});
 		
