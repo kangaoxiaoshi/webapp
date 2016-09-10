@@ -1,6 +1,6 @@
 define([
 	'pageView',
-	'text!indexHtml'
+	'text!teacherIndexHtml'
 	], function (
 		pageView,
 		template
@@ -8,27 +8,47 @@ define([
 		
 		var View = pageView.extend({
 			onCreate: function () {
-				var html = this.template(template, {});
-				this.$el.html(html);
+				this.pageSize = 10;
+				this.pageNum =1;
 			},
 
 			events: {
 				'click .js-alert': 'alertAction'
 			},
 			ajax: function  () {
+				// 最新导师
 				var obj = {
-					//http://120.24.1.97/shibufangcao/student/projectServlet.do?flag=u
-					url : 'user/teacherServlet.do?flag=getTeacherList',
-					//url: 'shibufangcao/student/projectServlet.do?flag=uploadPicture',
+					url: 'user/teacherServlet.do?flag=getTeacherList2_2_1',
 					data: {
-						pageNum: 1,
-						pageSize: 10
+						"pageNum": this.pageNum,
+						"pageSize": this.pageSize
+					}
+				};
+				//和我相关
+				var obj1 =  {
+					url: 'user/teacherServlet.do?flag=getRelatedTeachers2_2_1',
+					data: {
+						"pageNum": this.pageNum,
+						"pageSize": this.pageSize
 					}
 				}
-				return obj;
+				//为您推荐
+				var obj2 = {
+					url: 'student/teacherServlet.do?flag=getRecommendTeachers',
+					data: {
+						"pageNum": this.pageNum,
+						"pageSize": this.pageSize
+					}
+				}
+				return [obj, obj1, obj2];
 			},
-			onShow: function (data) {
-				
+			onShow: function (defaults, relative, recommended) {
+				var html = this.template(template, {
+					defaults: defaults.teacherList,
+					relative: relative.teacherList,
+					recommended: recommended.teacherList
+				});
+				this.$el.html(html);
 			},
 			alertAction: function () {
 				app.goTo('teacher/index');

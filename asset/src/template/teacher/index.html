@@ -1,59 +1,59 @@
+<style type="text/css">
+	.ti-box {
+		margin: .15rem auto;
+		border: 1px #ddd solid;
+		width: 94.67%;
+	}
+	.ti-title {
+		font-size: .15rem;
+		color: #929292;
+		padding: .075rem .15rem;
+		border-bottom: 1px #ddd solid;
+	}
+	.ti-teacher-pic {
+		width: .55rem;
+		height: .55rem;
+		border-radius: 50%;
+	}
+	.ti-flex {
+		padding: .15rem 0;
+		text-align: center;
+	}
+	.ti-new-teacher {
+		padding: .15rem 0 .15rem 1rem;
+		position: relative;
+	}
+	.ti-newteacher-pic {
+		position: absolute;
+		left: .15rem;
+	}
+	.ti-teacher-name {
+		font-size: .18rem;
+	}
+	.ti-it {
+		display: inline-block;
+		padding: .1rem .15rem;
+		background-color: #f5f5f5;
+		border-radius: .05rem;
+		color: #c9c9c9;
+		font-size: .15rem;
+		margin-top: .05rem;
+	}
+	.ti-icon::after {
+	    font-family: 'iconfont';
+	    content: "\e600";
+	    font-size: .25rem;
+	    color: #ffa032;
+	    margin: 0 .03rem;
+	}
+	.ti-diamond::after {
+		font-family: 'iconfont';
+	    content: "\e600";
+	    font-size: .15rem;
+	    color: #ffa032;
+	}
+</style>
 <div class="page-content">
-	<style type="text/css">
-		.ti-box {
-			margin: .15rem auto;
-			border: 1px #ddd solid;
-			width: 94.67%;
-		}
-		.ti-title {
-			font-size: .15rem;
-			color: #929292;
-			padding: .075rem .15rem;
-			border-bottom: 1px #ddd solid;
-		}
-		.ti-teacher-pic {
-			width: .55rem;
-			height: .55rem;
-			border-radius: 50%;
-		}
-		.ti-flex {
-			padding: .15rem 0;
-			text-align: center;
-		}
-		.ti-new-teacher {
-			padding: .15rem 0 .15rem 1rem;
-			position: relative;
-		}
-		.ti-newteacher-pic {
-			position: absolute;
-			left: .15rem;
-		}
-		.ti-teacher-name {
-			font-size: .18rem;
-		}
-		.ti-it {
-			display: inline-block;
-			padding: .1rem .15rem;
-			background-color: #f5f5f5;
-			border-radius: .05rem;
-			color: #c9c9c9;
-			font-size: .15rem;
-			margin-top: .05rem;
-		}
-		.ti-icon::after {
-		    font-family: 'iconfont';
-		    content: "\e600";
-		    font-size: .25rem;
-		    color: #ffa032;
-		    margin: 0 .03rem;
-		}
-		.ti-diamond::after {
-			font-family: 'iconfont';
-		    content: "\e600";
-		    font-size: .15rem;
-		    color: #ffa032;
-		}
-	</style>
 	<div class="ti-box">
 		<div class="ti-title">
 			和我有关
@@ -87,26 +87,13 @@
 			为你推荐
 		</div>
 		<div class="flex-wrap">
-			<div class="flex ti-flex">
-				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
-				张一山
-			</div>
-			<div class="flex ti-flex">
-				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
-				张一山
-			</div>
-			<div class="flex ti-flex">
-				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
-				张一山
-			</div>
-			<div class="flex ti-flex">
-				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
-				张一山
-			</div>
-			<div class="flex ti-flex">
-				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
-				张一山
-			</div>
+			<% _.each(recommended, function(item){%>
+				<div class="flex ti-flex">
+					<img class="ti-teacher-pic" src="<%=item.avatar%>" alt="导师图片" />
+					<%=item.teacherName%>
+					<span class="ti-diamond"></span>    <!--是否显示钻石-->
+				</div>
+			<%})%>
 		</div>
 	</div>
 	<div class="ti-box">
