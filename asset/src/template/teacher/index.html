@@ -18,6 +18,8 @@
 	.ti-flex {
 		padding: .15rem 0;
 		text-align: center;
+		float: left;
+		width: 20%;
 	}
 	.ti-new-teacher {
 		padding: .15rem 0 .15rem 1rem;
@@ -63,25 +65,25 @@
 		<div class="ti-title">
 			和我有关
 		</div>
-		<div class="flex-wrap">
-			<div class="flex ti-flex">
+		<div class="ti-aboutme-cont clearfix">
+			<div class="ti-flex fix-content">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" />
 				张一山
 				<span class="ti-diamond"></span>    <!--是否显示钻石-->
 			</div>
-			<div class="flex ti-flex">
+			<div class="ti-flex fix-content">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
 				张一山
 			</div>
-			<div class="flex ti-flex">
+			<div class="ti-flex fix-content">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
 				张一山
 			</div>
-			<div class="flex ti-flex">
+			<div class="ti-flex fix-content">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
 				张一山
 			</div>
-			<div class="flex ti-flex">
+			<div class="ti-flex fix-content">
 				<img class="ti-teacher-pic" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /><br />
 				张一山
 			</div>
@@ -91,9 +93,9 @@
 		<div class="ti-title">
 			为你推荐
 		</div>
-		<div class="flex-wrap">
+		<div class="ti-aboutme-cont clearfix">
 			<% _.each(recommended, function(item){%>
-				<div class="flex ti-flex">
+				<div class="ti-flex fix-content">
 					<img class="ti-teacher-pic" src="<%=item.avatar%>" alt="导师图片" />
 					<%=item.teacherName%>
 					<span class="ti-diamond"></span>    <!--是否显示钻石-->
