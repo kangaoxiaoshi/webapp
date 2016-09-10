@@ -42,12 +42,16 @@ define([
       if (!ctrl) {
         ctrl = "index";
       }
-
-      var ctrSrc = 'controller/' + ctrl;
-      query = util.getQuery(query);
-      require([ctrSrc], function(View) {
-        self.loadCtrl(View, ctrl, query)
-      });
+      if (config.routesList.indexOf(ctrl) !== -1) {
+        var ctrSrc = 'controller/' + ctrl;
+        query = util.getQuery(query);
+        require([ctrSrc], function(View) {
+          self.loadCtrl(View, ctrl, query)
+        });
+      } else {
+        app.goBack('index');
+      }
+     
     },
     loadCtrl: function(View, ctrl, query) {
       if (!this.firstLoad) {
@@ -112,6 +116,20 @@ define([
       }
 
       return $.ajax(params);
+    },
+    goBack: function (url, options) {
+      options = _.extend({
+          trigger: true,
+          replace: true,
+          cache: true,
+          animate: true
+      }, options);
+
+      if (!url) {
+        history.back();
+      } else {
+        Backbone.history.navigate(url, options);
+      }
     }
   }; 
 

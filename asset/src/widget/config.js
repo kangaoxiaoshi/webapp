@@ -4,7 +4,7 @@ var config = {
   assetRoot: '/webapp/asset/src/',
   gateway: 'http://120.24.1.97/shibufangcao/',
   routesList: [
-
+    'index'
   ],
   support: {
     storage: true
