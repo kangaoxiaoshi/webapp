@@ -52,6 +52,11 @@
 	    font-size: .15rem;
 	    color: #ffa032;
 	}
+	.ti-box:last-child::after {
+		 content: "";
+		 height: .55rem;
+		 display: block;
+	}
 </style>
 <div class="page-content">
 	<div class="ti-box">
@@ -100,21 +105,28 @@
 		<div class="ti-title">
 				最新导师
 		</div>
-		<div class="ti-new-teacher">
-			<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" />
-			<div class="ti-newteacher-intro">
-				<span class="ti-teacher-name">方兴嘉</span>
-				<span class="ti-icon"></span>
-				<span class="gray9">市场总监</span>
+		<%_.each(defaults, function (item) {%>
+			<div class="ti-new-teacher">
+				<!-- <img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /> -->
+				<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="<%=item.avatar%>" alt="导师图片" />
+				<div class="ti-newteacher-intro">
+					<span class="ti-teacher-name"><%=item.teacherName%></span>
+					<%if (item.isPlatform) {%>
+						<span class="ti-icon"></span>
+					<%}%>
+					<span class="gray9"><%item.professionaltitles%></span>
+				</div>
+				<%_.each(item.tag, function(item1){%>
+					<div class="ti-it">
+						<%=item1%>
+					</div>
+				<%})%>
 			</div>
-			<div class="ti-it">
-				IT领域
-			</div>
-		</div>
+		<%})%>
 	</div>
 </div>
 <div class="page-bottom">
-	<div class="fixed-bottom-bg">
+	<div class="fixed-bottom-bg js-more" >
 		<button class="btn btn-block btn-primary">更多导师</button>
 	</div>
 </div>

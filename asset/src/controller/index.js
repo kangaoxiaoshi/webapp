@@ -13,7 +13,7 @@ define([
 			},
 
 			events: {
-				'click .js-alert': 'alertAction'
+				'click .js-more': 'moreAction'
 			},
 			ajax: function  () {
 				// 最新导师
@@ -50,8 +50,14 @@ define([
 				});
 				this.$el.html(html);
 			},
-			alertAction: function () {
-				app.goTo('teacher/index');
+			moreAction: function () {
+				app.ajax({
+					url: 'student/loginRegisterServlet.do?flag=login',
+					data: {
+						UserName: "13715848993",
+						Password: "123456789"
+					}
+				});
 			}
 		});
 		
