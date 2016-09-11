@@ -1,19 +1,18 @@
 <%_.each(projects, function (item) {%>
-		<div class="td-experience-item js-proDetail">
-				<img class="td-experience-pic" src="<%=item.companyLogo%>" alt="图片" />
-				<div class="td-item-title">
-					<%=item.title%>
-					<span class="td-experience-label">
-						<%=item.type%>
-					</span>
-				</div>
-				<div class="td-item-cont">
-					<%if (item.isPlatform) {%>
-						<span class="td-experience-label2">平台项目</span>
-					<%}%>
-					<span class="td-experience-time"><%=item.createTime%></span>
-					<span class="td-experience-detail">详情>>></span>
-				</div>
-			
+	<div class="td-experience-item js-proDetail">
+		<img class="td-experience-pic" src="<%=item.companyLogo%>" alt="图片" />
+		<div class="td-item-title">
+			<span class="td-item-words show-dots"><%=item.title%></span>
+			<span class="td-experience-label"> <!--蓝加active-->
+				<%=item.type%>
+			</span>
 		</div>
+		<div class="td-item-cont">
+			<%if (item.isPlatform) {%>
+				<span class="td-experience-label2">平台项目</span> <!--蓝加active-->
+			<%}%>
+			<span class="td-experience-time"><%=item.createTime%></span>
+			<span class="td-experience-detail">详情>>></span> <!--蓝加active-->
+		</div>
+	</div>
 <%})%>
