@@ -23,7 +23,8 @@ var requirejs = {
     'teacherIndexHtml': 'template/teacher/index.html',
     'teacherIndexGreenHtml': 'template/teacher/indexgreen.html',
     'teacherDetailHtml': 'template/teacher/detail.html',
-    'teacherDetailGreenHtml': 'template/teacher/detailgreen.html'
+    'teacherDetailGreenHtml': 'template/teacher/detailgreen.html',
+    'teachermoreHtml': 'template/teacher/mteacher.html'
   }
 };
 

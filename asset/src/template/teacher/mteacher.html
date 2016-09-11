@@ -1,0 +1,18 @@
+<%_.each(defaults, function (item) {%>
+	<div class="ti-new-teacher js-teacher" data-id="<%=item.teacherId%>">
+		<!-- <img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /> -->
+		<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="<%=item.avatar%>" alt="导师图片" />
+		<div class="ti-newteacher-intro">
+			<span class="ti-teacher-name"><%=item.teacherName%></span>
+			<%if (item.isPlatform) {%>
+				<span class="ti-icon"></span>
+			<%}%>
+			<span class="gray9"><%item.professionaltitles%></span>
+		</div>
+		<%_.each(item.tag, function(item1){%>
+			<div class="ti-it">
+				<%=item1%>
+			</div>
+		<%})%>
+	</div>
+<%})%>

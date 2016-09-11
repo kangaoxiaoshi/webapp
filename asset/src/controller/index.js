@@ -1,15 +1,22 @@
 define([
 	'pageView',
-	'text!teacherIndexHtml'
+	'text!teacherIndexHtml',
+	'text!teacherIndexGreenHtml',
+	'text!teachermoreHtml'
 	], function (
 		pageView,
-		template
+		template,
+		template1,
+		mtemplate
 	) {
 		
 		var View = pageView.extend({
 			onCreate: function () {
 				this.pageSize = 10;
 				this.pageNum =1;
+				this.pageTecNum = 1;
+				this.pageTecSize = 4;
+				this.latstSize = void 0;
 			},
 
 			events: {
@@ -21,8 +28,8 @@ define([
 				var obj = {
 					url: 'user/teacherServlet.do?flag=getTeacherList2_2_1',
 					data: {
-						"pageNum": this.pageNum,
-						"pageSize": this.pageSize
+						"pageNum": this.pageTecNum,
+						"pageSize": this.pageTecSize
 					}
 				};
 				//和我相关
@@ -44,19 +51,41 @@ define([
 				return [obj, obj1, obj2];
 			},
 			onShow: function (defaults, relative, recommended) {
-				var html = this.template(template, {
+				var  pageTemplage = this.query.teacher == 1 ? template1 : template;
+				var html = this.template(pageTemplage, {
 					defaults: defaults.teacherList,
 					relative: relative.teacherList,
 					recommended: recommended.teacherList
 				});
 				this.$el.html(html);
+				this.latstSize = defaults.teacherList.length;
 			},
 			moreAction: function () {
+				if (this.latstSize !== this.pageTecSize) {
+					app.hint('已经没有更多导师');
+					return;
+				}
+				var self = this;
+				this.pageTecNum ++ ;
 				app.ajax({
-					url: 'student/loginRegisterServlet.do?flag=login',
+					url: 'user/teacherServlet.do?flag=getTeacherList2_2_1',
 					data: {
-						UserName: "13715848993",
-						Password: "123456789"
+						"pageNum": this.pageTecNum,
+						"pageSize": this.pageTecSize
+					},
+					success: function (data) {
+						//加载更多显示
+						self.latstSize =  data.teacherList.length;
+						if (data.teacherList.length) {
+							var html = self.template(mtemplate, {
+								defaults: data.teacherList
+							});
+							self.$('.js-more-wrap').append(html);
+
+						} else {
+							app.hint('已经没有更多导师');
+							return;
+						}
 					}
 				});
 			},

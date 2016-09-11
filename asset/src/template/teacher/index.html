@@ -42,17 +42,17 @@
 		margin-top: .05rem;
 	}
 	.ti-icon::after {
-	    font-family: 'iconfont';
-	    content: "\e600";
-	    font-size: .25rem;
-	    color: #ffa032;
-	    margin: 0 .03rem;
+		font-family: 'iconfont';
+		content: "\e600";
+		font-size: .25rem;
+		color: #ffa032;
+		margin: 0 .03rem;
 	}
 	.ti-diamond::after {
 		font-family: 'iconfont';
-	    content: "\e600";
-	    font-size: .15rem;
-	    color: #ffa032;
+		content: "\e600";
+		font-size: .15rem;
+		color: #ffa032;
 	}
 	.ti-box:last-child::after {
 		 content: "";
@@ -107,24 +107,26 @@
 		<div class="ti-title">
 				最新导师
 		</div>
-		<%_.each(defaults, function (item) {%>
-			<div class="ti-new-teacher js-teacher" data-id="<%=item.teacherId%>">
-				<!-- <img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /> -->
-				<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="<%=item.avatar%>" alt="导师图片" />
-				<div class="ti-newteacher-intro">
-					<span class="ti-teacher-name"><%=item.teacherName%></span>
-					<%if (item.isPlatform) {%>
-						<span class="ti-icon"></span>
-					<%}%>
-					<span class="gray9"><%item.professionaltitles%></span>
-				</div>
-				<%_.each(item.tag, function(item1){%>
-					<div class="ti-it">
-						<%=item1%>
+		<div class = "js-more-wrap">
+			<%_.each(defaults, function (item) {%>
+				<div class="ti-new-teacher js-teacher" data-id="<%=item.teacherId%>">
+					<!-- <img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="/webapp/asset/src/img/teacher.png" alt="导师图片" /> -->
+					<img class="ti-teacher-pic ti-newteacher-pic vertical-center" src="<%=item.avatar%>" alt="导师图片" />
+					<div class="ti-newteacher-intro">
+						<span class="ti-teacher-name"><%=item.teacherName%></span>
+						<%if (item.isPlatform) {%>
+							<span class="ti-icon"></span>
+						<%}%>
+						<span class="gray9"><%item.professionaltitles%></span>
 					</div>
-				<%})%>
-			</div>
-		<%})%>
+					<%_.each(item.tag, function(item1){%>
+						<div class="ti-it">
+							<%=item1%>
+						</div>
+					<%})%>
+				</div>
+		  <%})%>
+		</div>
 	</div>
 </div>
 <div class="page-bottom">

@@ -1,9 +1,11 @@
 define([
   'backbone',
-  'util'
+  'util',
+  'hint'
   ], function (
     Backbone,
-    util
+    util,
+    UIhint
   ) {
   var app = {
     start: function () {
@@ -15,6 +17,22 @@ define([
         // 启用pushState
         pushState: true
       });
+      
+      this._hint = new UIhint ({
+        appendElement: document.body
+      });
+      this._hint.hide();
+
+    },
+    hint: function (options) {
+      if (_.isString(options)) {
+        options = {
+          msg: options
+        };
+      }
+
+      this._hint.option(options);
+      this._hint.show();
     },
     loadPage: function (view) {
      

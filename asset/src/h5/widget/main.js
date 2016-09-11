@@ -19,6 +19,9 @@ require.config({
     'pageView': 'h5/widget/pageView',
     'backbone': 'h5/lib/backbone',
     'text': 'h5/lib/text',
+    'abstract': 'h5/ui/abstract',
+    'hint':'h5/ui/hint',
+    'UIHintHtml': 'h5/ui/hint.html'
   }
 });
 
