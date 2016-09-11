@@ -24,7 +24,8 @@ var requirejs = {
     'teacherIndexGreenHtml': 'template/teacher/indexgreen.html',
     'teacherDetailHtml': 'template/teacher/detail.html',
     'teacherDetailGreenHtml': 'template/teacher/detailgreen.html',
-    'teachermoreHtml': 'template/teacher/mteacher.html'
+    'teachermoreHtml': 'template/teacher/mteacher.html',
+    'moreCommentHtml': 'template/teacher/mComment.html'
   }
 };
 

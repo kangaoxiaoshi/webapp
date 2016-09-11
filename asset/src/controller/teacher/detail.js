@@ -1,17 +1,25 @@
 define([
 	'pageView',
-	'text!teacherDetailHtml'
+	'text!teacherDetailHtml',
+	'text!moreCommentHtml'
 	], function (
 		pageView,
-		template
+		template,
+		comTemplage
 	) {
 		
 		var View = pageView.extend({
 			onCreate: function () {
 				this.pageNum = 1;
 				this.pageSize = 10;
+				//项目经历页面参数
 				this.proPageNum =1;
 				this.ProPageSize =5;
+				this.prolastSize = void 0;
+				//学生留言页面参数
+				this.comPageNum =1;
+				this.comPageSize =2;
+				this.comlastSize = void 0;
 			},
 
 			events: {
@@ -32,8 +40,8 @@ define([
 					url: 'user/teacherServlet.do?flag=getEvaluationList2_2_1',
 					data: {
 						teacherId: this.query.id,
-						pageNum: this.pageNum,
-						pageSize: this.pageSize 
+						pageNum: this.comPageNum,
+						pageSize: this.comPageSize 
 					}
 				};
 				var tecProjects = {
@@ -52,7 +60,10 @@ define([
 					comments: data1.evaluations,
 					projects: data2.projects
 				});
+
 				this.$el.html(html);
+				this.prolastSize = data2.projects.length;
+				this.comlastSize = data1.evaluations.length;
 			},
 			moreAction: function (e) {
 				var target = $(e.currentTarget);
@@ -66,7 +77,28 @@ define([
 				this.$('.js-more').show();
 			},
 			moreCommentAction: function () {
+				var self = this;
+				if (this.comlastSize < this.comPageSize) {
+					app.hint('已经没有更多学生留言');
+					return;
+				}
+				this.comPageNum++ ;
+				app.ajax({
+					url: 'user/teacherServlet.do?flag=getEvaluationList2_2_1',
+					data: {
+						teacherId: this.query.id,
+						pageNum: this.comPageNum,
+						pageSize: this.comPageSize 
+					},
+					success: function (data) {
+						self.comlastSize = data.evaluations.length;
 
+						var html = self.template(comTemplage, {
+							comments: data.evaluations
+						});
+						self.$('.js-comments-wrap').append(html);
+					}
+				});
 			},
 			mroeProAction: function () {
 

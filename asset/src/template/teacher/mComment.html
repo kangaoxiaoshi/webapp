@@ -1,0 +1,15 @@
+<%_.each(comments, function (item) {%>
+	<div class="td-student-top">
+		<img class="td-student-pic" src="/webapp/asset/src/img/teacher.png"/>
+		<span class="td-student-name"><%=item.name%></span>
+		<span class="td-student-major"><%=item.grade.substr(2)%>级  <%=item.major%></span>
+		<div class="td-msg-time font-xs"><%=item.createTime%></div>
+	</div>
+	<div class="td-triangle"></div>
+	<div class="td-student-msg fix-content">
+		<%=item.content%>
+	</div>
+	<div class="td-join-activity">
+		参与活动：<%=item.projectName%>
+	</div>
+<%})%>

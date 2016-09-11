@@ -1,12 +1,10 @@
 define([
 	'pageView',
 	'text!teacherIndexHtml',
-	'text!teacherIndexGreenHtml',
 	'text!teachermoreHtml'
 	], function (
 		pageView,
 		template,
-		template1,
 		mtemplate
 	) {
 		
@@ -51,11 +49,12 @@ define([
 				return [obj, obj1, obj2];
 			},
 			onShow: function (defaults, relative, recommended) {
-				var  pageTemplage = this.query.teacher == 1 ? template1 : template;
-				var html = this.template(pageTemplage, {
+				//var  pageTemplage = this.query.teacher == 1 ? template1 : template;
+				var html = this.template(template, {
 					defaults: defaults.teacherList,
 					relative: relative.teacherList,
-					recommended: recommended.teacherList
+					recommended: recommended.teacherList,
+					isteacher: this.query.teacher
 				});
 				this.$el.html(html);
 				this.latstSize = defaults.teacherList.length;
