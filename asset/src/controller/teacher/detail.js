@@ -1,11 +1,13 @@
 define([
 	'pageView',
 	'text!teacherDetailHtml',
-	'text!moreCommentHtml'
+	'text!moreCommentHtml',
+	'text!moreProjectHtml'
 	], function (
 		pageView,
 		template,
-		comTemplage
+		comTemplage,
+		proTemplate
 	) {
 		
 		var View = pageView.extend({
@@ -101,13 +103,36 @@ define([
 				});
 			},
 			mroeProAction: function () {
+				var self= this;
+				if (this.prolastSize < this.ProPageSize) {
+					app.hint('已经没有更多项目');
+					return;
+				}
+				this.proPageNum++;
+				app.ajax({
+					url: 'user/teacherServlet.do?flag=getExperienceProjects2_2_1',
+					data: {
+						teacherId: this.query.id,
+						pageNum: this.proPageNum,
+						pageSize: this.ProPageSize 
+					}, 
+					success: function (data) {
+						self.prolastSize = data.projects.length;
 
+						var html = self.template(proTemplate, {
+							projects: data.projects
+						});
+
+						self.$('.js-projects-wrap').append(html);
+					}
+				});
 			},
-			detailAction: function () {
+			detailAction: function (e) {
 				var target = $(e.currentTarget)
 				var id = target.data('id');
 				if (id) {
-					
+					//链接到时候给了直接配置
+					//app.goTo()
 				}
 			}
 			
