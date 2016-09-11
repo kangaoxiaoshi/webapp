@@ -24,6 +24,8 @@ define([
 				this.comPageNum =1;
 				this.comPageSize =2;
 				this.comlastSize = void 0;
+				// 是否已经收藏
+				this.isCollected = void 0;
 			},
 
 			events: {
@@ -32,7 +34,9 @@ define([
 				'click .js-moreComment': 'moreCommentAction',
 				'click .js-mroeProjects': 'mroeProAction',
 				'click .js-proDetail': 'detailAction',
-				'change .js-upload': 'uploadAction'
+				'change .js-upload': 'uploadAction',
+				'click .js-mark': 'markAction',
+				'click .js-login': 'loginAction'
 			},
 			ajax: function () {
 				var tecInfo = {
@@ -60,6 +64,7 @@ define([
 				return [tecInfo, stuMsg, tecProjects];	
 			},
 			onShow: function (data, data1, data2) {
+				this.isCollected = data.isCollected;
 				var html = this.template(template, {
 					info: data,
 					comments: data1.evaluations,
@@ -148,12 +153,13 @@ define([
 
 				if (file) {
 					var options = {
-	          url: config.gateway +'student/projectServlet.do?flag=uploadPicture',
+	          //url: config.gateway +'student/projectServlet.do?flag=uploadPicture',
+	          url: config.gateway +'teacher/teacherServlet.do?flag=uploadTeacherBg2_2_1',
 	          quality: 0.8, //图片质量限制
 	          data: {},
 	          onUpload: function (result) {            
 	           if (result && result.picUrl) {
-	           	debugger;
+	           	
 	           		self.$('.js-background').css('background-image', 'url(' + result.picUrl + ')' );
 	           }
 	          },
@@ -164,6 +170,38 @@ define([
 	        };
 	        new ImageUpload (file, options);
 				}
+			},
+			markAction: function () {
+				var self =this;
+				app.ajax({
+					url: 'student/studentServlet.do?flag=collectTeacher',
+					data: {
+						teacherId: this.query.id,
+						type: this.isCollected ? 2 : 1
+					},
+					success: function (data) {
+						if (data) {
+							if (self.isCollected) {
+								// 前收藏点击取消收藏
+								self.$('.js-love').removeClass('active');
+							} else {
+								self.$('.js-love').addClass('active');
+							}
+						}
+					}
+				});
+			},
+			loginAction: function () {
+				app.ajax({
+					url: 'teacher/loginRegisterServlet.do?flag=login',
+					data: {
+						'UserName': '13928985693',
+						'Password': '123456789' 
+					},
+					success: function () {
+						console.info('success');
+					}
+				})
 			}
 			
 		});

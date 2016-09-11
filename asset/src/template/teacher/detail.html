@@ -242,7 +242,7 @@
 	    font-size: .15rem;
 	}
 	.td-placeholder {
-		height: .5rem;
+		height: .6rem;
 	}
 	.td-btn {
 		background-color: #48bbf1;
@@ -307,7 +307,7 @@
 		<div class="td-name"><%=info.teacherName%></div>
 		<div class="td-position"><%=info.professionaltitles%></div>
 		<div class="td-company"><%=info.workUnit%></div>
-		<div class="td-top-love" <%if(info.isCollected){print('active')}%>></div>  <!--喜欢按钮，加黄加active，蓝加active2-->
+		<div class="td-top-love js-love" <%if(info.isCollected){print('active')}%>></div>  <!--喜欢按钮，加黄加active，蓝加active2-->
 		
 		<input class ="js-upload td-top-tecImg" type="file" accept="image/*" capture="camera">
 		
@@ -323,7 +323,7 @@
 					<%=info.inventCount%>
 				</div>
 			</div>
-			<div class="flex td-tabel-flex">
+			<div class="flex td-tabel-flex js-login">
 				<div class="td-item font-s">
 					<span class="td-guide"></span>
 					指导过<%=info.guideCount%>人成长
@@ -332,7 +332,7 @@
 					<%=info.guideCount%>
 				</div>
 			</div>
-			<div class="flex td-tabel-flex td-tabel-flex2">
+			<div class="flex td-tabel-flex td-tabel-flex2 js-mark">
 				<div class="td-item font-s">
 					<span class="td-love"></span>
 					受关注
@@ -432,7 +432,7 @@
 		<button class="btn btn-block td-btn">邀请他参加项目</button>
 	</div>
 </div>
-<div class="black-overlay">
+<div class="black-overlay" style="display:none">
 	<div class="td-project-list">
 		<div class="td-experience-title">
 			我的项目列表
