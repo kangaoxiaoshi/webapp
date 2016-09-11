@@ -10,6 +10,7 @@
 		background-size: 3.75rem 1.75rem;
 		text-align: center;
 		position: relative;
+		position: relative;
 	}	
 	.td-name {
 		margin-top: 1.3rem;
@@ -231,13 +232,26 @@
 		border: 1px #48bbf1 solid;
 		color: #fff;
 	}
+	.td-top-tecImg{
+		position: absolute;
+		left: 0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
+		opacity: 0;
+		width: 100%;
+	}
 </style>
 <div class="page-content td-page-cont">
-	<div class="td-top">
+	<div class="td-top js-background">
 		<div class="td-name"><%=info.teacherName%></div>
 		<div class="td-position"><%=info.professionaltitles%></div>
 		<div class="td-company"><%=info.workUnit%></div>
 		<div class="td-top-love" <%if(info.isCollected){print('active')}%>></div>  <!--喜欢按钮，加active-->
+		
+		<input class ="js-upload td-top-tecImg" type="file" accept="image/*" capture="camera">
+		
 	</div>
 	<div class="td-tabel">
 		<div class="flex-wrap">

@@ -2,12 +2,14 @@ define([
 	'pageView',
 	'text!teacherDetailHtml',
 	'text!moreCommentHtml',
-	'text!moreProjectHtml'
+	'text!moreProjectHtml',
+	'ImageUpload'
 	], function (
 		pageView,
 		template,
 		comTemplage,
-		proTemplate
+		proTemplate,
+		ImageUpload
 	) {
 		
 		var View = pageView.extend({
@@ -29,7 +31,8 @@ define([
 				'click .js-close': 'closeAction',
 				'click .js-moreComment': 'moreCommentAction',
 				'click .js-mroeProjects': 'mroeProAction',
-				'click .js-proDetail': 'detailAction'
+				'click .js-proDetail': 'detailAction',
+				'change .js-upload': 'uploadAction'
 			},
 			ajax: function () {
 				var tecInfo = {
@@ -133,6 +136,33 @@ define([
 				if (id) {
 					//链接到时候给了直接配置
 					//app.goTo()
+				}
+			},
+			uploadAction: function (e) {
+				if (!this.query.teacher) {
+					return;
+				}
+				var self = this,
+						target =e.currentTarget,
+						file = target.files[0];
+
+				if (file) {
+					var options = {
+	          url: config.gateway +'student/projectServlet.do?flag=uploadPicture',
+	          quality: 0.8, //图片质量限制
+	          data: {},
+	          onUpload: function (result) {            
+	           if (result && result.picUrl) {
+	           	debugger;
+	           		self.$('.js-background').css('background-image', 'url(' + result.picUrl + ')' );
+	           }
+	          },
+		        onError:onError 
+	        };
+	        //出错处理       
+	        function onError() {
+	        };
+	        new ImageUpload (file, options);
 				}
 			}
 			

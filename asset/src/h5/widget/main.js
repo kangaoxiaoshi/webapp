@@ -21,7 +21,8 @@ require.config({
     'text': 'h5/lib/text',
     'abstract': 'h5/ui/abstract',
     'hint':'h5/ui/hint',
-    'UIHintHtml': 'h5/ui/hint.html'
+    'UIHintHtml': 'h5/ui/hint.html',
+    
   }
 });
 

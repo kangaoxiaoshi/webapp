@@ -92,7 +92,11 @@ define([
 				var target = $(e.currentTarget);
 				var id = target.data("id");
 				if (id) {
-					app.goTo('teacher/detail?id=' + id);
+					var url = 'teacher/detail?id=' + id;
+					if (this.query.teacher) {
+						url += '&teacher=1';
+					}
+					app.goTo(url);
 				}
 			}
 		});
