@@ -41,12 +41,17 @@
 	}
 	.td-tabel-flex {
 		border-right: 1px #ccc solid;
+		width: 30%;
+		float: left;
 	}
 	.td-tabel-flex2 {
-		border-right: 0;
+		width: 39%;
+		border-right: 1px #ccc solid;
+		float: left;
 	}
 	.td-tabel-flex3 {
-		padding: 0 .1rem;
+		width: 30%;
+		float: left;
 	}
 	.td-invite::after {
 		font-family: 'iconfont';
@@ -318,34 +323,32 @@
 		<input class ="js-upload td-top-tecImg" type="file" accept="image/*" capture="camera">
 		
 	</div>
-	<div class="td-tabel">
-		<div class="flex-wrap">
-			<div class="flex td-tabel-flex">
-				<div class="td-item font-s">
-					<span class="td-invite"></span>
-					收到邀请
-				</div>
-				<div class="td-num"> <!--蓝加active-->
-					<%=info.inventCount%>
-				</div>
+	<div class="td-tabel clearfix">
+		<div class="td-tabel-flex">
+			<div class="td-item font-s">
+				<span class="td-invite"></span>
+				收到邀请
 			</div>
-			<div class="flex td-tabel-flex td-tabel-flex3 js-login">
-				<div class="td-item font-s">
-					<span class="td-guide"></span>
-					指导过<%=info.guideCount%>人成长
-				</div>
-				<div class="td-num">  <!--蓝加active-->
-					<%=info.guideCount%>
-				</div>
+			<div class="td-num"> <!--蓝加active-->
+				<%=info.inventCount%>
 			</div>
-			<div class="flex td-tabel-flex td-tabel-flex2 js-mark">
-				<div class="td-item font-s">
-					<span class="td-love"></span>
-					受关注
-				</div>
-				<div class="td-num"> <!--蓝加active-->
-					<%=info.collectCount%>
-				</div>
+		</div>
+		<div class="td-tabel-flex2 js-login">
+			<div class="td-item font-s">
+				<span class="td-guide"></span>
+				指导过<%=info.guideCount%>人成长
+			</div>
+			<div class="td-num">  <!--蓝加active-->
+				<%=info.guideCount%>
+			</div>
+		</div>
+		<div class="td-tabel-flex3 js-mark">
+			<div class="td-item font-s">
+				<span class="td-love"></span>
+				受关注
+			</div>
+			<div class="td-num"> <!--蓝加active-->
+				<%=info.collectCount%>
 			</div>
 		</div>
 	</div>
