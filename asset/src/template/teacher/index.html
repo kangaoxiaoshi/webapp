@@ -67,19 +67,14 @@
 		font-size: .15rem;
 		color: #48bbf1;
 	}
-
-	
-	.ti-box:last-child::after {
-		 content: "";
-		 height: .55rem;
-		 display: block;
+	.ti-btn {
+		background-color: #48bbf1;
+		border: 1px #48bbf1 solid;
+		color: #fff;
 	}
-	.tig-btn {
-			background-color: #48bbf1;
-			border: 1px #48bbf1 solid;
-			color: #fff;
-		}
-
+	.ti-placeholder {
+		height: .7rem;
+	}
 </style>
 <div class="page-content">
 	<div class="ti-box">
@@ -152,9 +147,10 @@
 		  <%})%>
 		</div>
 	</div>
+	<div class="ti-placeholder"></div>
 </div>
 <div class="page-bottom">
-	<div class="fixed-bottom-bg js-more" >
-		<button class="btn btn-block btn-primary <%if(isteacher) {print('tig-btn')}%>">更多导师</button>
+	<div class="fixed-bottom-white-bg js-more" >
+		<button class="btn btn-block btn-primary <%if(isteacher) {print('ti-btn')}%>">更多导师</button>
 	</div>
 </div>

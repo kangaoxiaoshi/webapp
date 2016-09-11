@@ -64,6 +64,9 @@
 		font-size: .2rem;
 		font-weight: bold;
 		color: #ffa130;
+	} 
+	.td-num.active {
+		color: #48BBF1;
 	}
 	.td-top-love {
 		position: absolute;
@@ -78,6 +81,9 @@
 	}
 	.td-top-love.active::after {
 		color: #ffa130;
+	}
+	.td-top-love.active2::after {
+		color: #48BBF1;
 	}
 	.td-goodat {
 		width: 94.67%;
@@ -120,6 +126,9 @@
 	.td-close {
 		text-align: right;
 		color: #ffa130;
+	}
+	.td-close.active {
+		color: #48BBF1;
 	}
 	.td-more {
 		background-color: #f0f0f0;
@@ -206,6 +215,10 @@
 	.td-item-title {
 		font-size: .2rem;
 	}
+	.td-item-words {
+		width: 80%;
+		display: inline-block;
+	}
 	.td-item-cont {
 		margin-top: .05rem;
 	}
@@ -215,6 +228,10 @@
 	}
 	.td-experience-label2 {
 		color: #ffa131;
+	}
+	.td-experience-label2.active,.td-experience-label.active,
+	.td-experience-detail.active {
+		color: #48BBF1;
 	}
 	.td-experience-time {
 		color: #cecece;
@@ -232,6 +249,48 @@
 		border: 1px #48bbf1 solid;
 		color: #fff;
 	}
+	.td-project-list {
+		background-color: #fff;
+		position: absolute;
+		bottom: 0;
+		width: 94.67%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.td-project-ul li{
+		padding: .1rem ;
+		font-size: .18rem;
+		
+	}
+	.td-safe {
+		color: #48BBF1;
+	}
+	.td-safe::before {
+		font-family: 'iconfont';
+	    content: "\e606";
+	    font-size: .15rem;
+	}
+	.td-choose {
+		float: right;
+	}
+	.td-choose::after {
+		font-family: 'iconfont';
+	    content: "\e607";
+	    font-size: .15rem;
+	    color: #C9C9C9;
+	}
+	.td-choose.active::after {
+		font-family: 'iconfont';
+	    content: "\e608";
+	    font-size: .17rem;
+	    color: #48BBF1;
+	}
+	.td-btn-bg {
+		padding: .07rem .15rem;
+	    background-color: #f8f8f8;
+	    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
+	    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.08);
+	}
 	.td-top-tecImg{
 		position: absolute;
 		left: 0;
@@ -248,7 +307,7 @@
 		<div class="td-name"><%=info.teacherName%></div>
 		<div class="td-position"><%=info.professionaltitles%></div>
 		<div class="td-company"><%=info.workUnit%></div>
-		<div class="td-top-love" <%if(info.isCollected){print('active')}%>></div>  <!--喜欢按钮，加active-->
+		<div class="td-top-love" <%if(info.isCollected){print('active')}%>></div>  <!--喜欢按钮，加黄加active，蓝加active2-->
 		
 		<input class ="js-upload td-top-tecImg" type="file" accept="image/*" capture="camera">
 		
@@ -260,7 +319,7 @@
 					<span class="td-invite"></span>
 					收到邀请
 				</div>
-				<div class="td-num">
+				<div class="td-num"> <!--蓝加active-->
 					<%=info.inventCount%>
 				</div>
 			</div>
@@ -269,7 +328,7 @@
 					<span class="td-guide"></span>
 					指导过<%=info.guideCount%>人成长
 				</div>
-				<div class="td-num">
+				<div class="td-num">  <!--蓝加active-->
 					<%=info.guideCount%>
 				</div>
 			</div>
@@ -278,7 +337,7 @@
 					<span class="td-love"></span>
 					受关注
 				</div>
-				<div class="td-num">
+				<div class="td-num"> <!--蓝加active-->
 					<%=info.collectCount%>
 				</div>
 			</div>
@@ -305,7 +364,7 @@
 			<div class="td-my-intro js-myinfo" style="display:none;">
 				<%=info.introdution%>
 			</div>
-			<div class="td-close js-myinfo js-close" style="display:none;">收起</div>
+			<div class="td-close js-myinfo js-close" style="display:none;">收起</div> <!--蓝加active-->
 		</div>
 	</div>
 	<div class="td-more js-more">查看更多简历</div>
@@ -345,17 +404,17 @@
 				<div class="td-experience-item js-proDetail">
 						<img class="td-experience-pic" src="<%=item.companyLogo%>" alt="图片" />
 						<div class="td-item-title">
-							<%=item.title%>
-							<span class="td-experience-label">
+							<span class="td-item-words show-dots"><%=item.title%></span>
+							<span class="td-experience-label"><!--蓝加active-->
 								<%=item.type%>
 							</span>
 						</div>
 						<div class="td-item-cont">
 							<%if (item.isPlatform) {%>
-								<span class="td-experience-label2">平台项目</span>
+								<span class="td-experience-label2">平台项目</span> <!--蓝加active-->
 							<%}%>
 							<span class="td-experience-time"><%=item.createTime%></span>
-							<span class="td-experience-detail">详情>>></span>
+							<span class="td-experience-detail">详情>>></span><!--蓝加active-->
 						</div>
 					
 				</div>
@@ -367,4 +426,31 @@
 		查看全部
 	</div>
 	<div class="td-placeholder"></div>
+</div>
+<div class="page-bottom">
+	<div class="fixed-bottom-white-bg">
+		<button class="btn btn-block td-btn">邀请他参加项目</button>
+	</div>
+</div>
+<div class="black-overlay">
+	<div class="td-project-list">
+		<div class="td-experience-title">
+			我的项目列表
+		</div>
+		<ul class="td-project-ul">
+			<li>
+				微信营销之旅 
+				<span class="td-safe font-xs">平台项目</span>
+				<span class="td-choose"></span> <!--选中添加active-->
+			</li>
+			<li>
+				微信营销之旅 
+				<span class="td-safe font-xs">平台项目</span>
+				<span class="td-choose active"></span> <!--选中添加active-->
+			</li>
+		</ul>
+		<div class="td-btn-bg">
+			<button class="btn btn-block td-btn">请选择项目</button> <!--不可点击disable=disable-->
+		</div>
+	</div>
 </div>
