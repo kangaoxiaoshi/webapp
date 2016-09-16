@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>十步芳草 - 实践经历详情</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="www.keyweb.cn" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no;" />
+    <link href="../files/bootstrap.css" rel="stylesheet" />
+    <link href="../files/glide.css" rel="Stylesheet" />
+    <link href="../files/mobiscroll.css" rel="Stylesheet" />
+    <link href="../files/mobiscroll_date.css" rel="Stylesheet" />
+    <link href="../files/style.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../files/jquery.min.js"></script>
+    <script type="text/javascript" src="../files/bootstrap.js"></script>
+    <script type="text/javascript" src="../files/jquery.glide.js"></script>
+    <script type="text/javascript" src="../files/mobiscroll_date.js"></script>
+    <script type="text/javascript" src="../files/mobiscroll.js"></script>
+    <script type="text/javascript" src="../files/jquery.form.min.js"></script>
+    <style>
+        body {
+            font-family: STXihei;
+            background:#fefefe;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner" style="padding:10px;background:#f2f2f2;margin-top:0px">
+        <!-- <div class="slider">
+             <ul class="slider__wrapper">
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/1.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/2.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/3.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/4.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+             </ul>
+         </div>-->
+    </div>
+    <script>        //var banner = $('.slider').glide();</script>
+
+    <div class="container" style="">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left:10px;padding-right:10px">
+                <div style="margin-bottom:15px;margin-top:15px;border-bottom:1px solid #ccc;padding-bottom:15px;text-align:center"><input style="background:#10a82f;border:0px;width:100%" type="button" class="btn btn-primary" onclick="window.location.href='wechatcustomprojectlist.html'" value="返回项目列表" /></div>
+                <div id="customProjectDetail">
+                    <div class="btnBox deleteProjectBtnBox" style="display:none"><button style="background:#10a82f;border:0px;width:100%" id="deleteProjectBtn" class="btn btn-primary" onclick="deleteProject()">删除实践经历</button></div>
+                    <div class="basicBox">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">项目名</span><span class="content projectName"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">项目时长</span><span class="content projectLong"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">类型</span><span class="content activeForm"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">标签</span><span class="content category"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">角色</span><span class="content roleName"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">单位名称</span><span class="content workUnit"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">单位负责人</span><span class="content workUnitBoss"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">单位联系电话</span><span class="content workUnitPhone"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">实践时间</span><span class="content projectTime"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">实践地址</span><span class="content address"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">团队负责人</span><span class="content teamLeader"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="item">
+                                <span class="title xiheiTitle">团队负责人电话</span><span class="content teamLeaderPhone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="introductionBox">
+                        <div class="title xiheiTitle">实践内容</div>
+                        <div class="content"></div>
+                    </div>
+                    <div class="picturesBox">
+                        <div class="title xiheiTitle">实习图片集</div>
+                        <div class="content"></div>
+                    </div>
+                </div>
+                <div id="answerProblemListBox">
+                    <div class="title xiheiTitle">导师/伙伴问题回复</div>
+                    <div class="content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--评价未完成提醒-->
+    <div class="modal fade" id="answeredModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border:0px;">
+                <div class="modal-header" style="">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel" style="">未完成提醒</h4>
+                </div>
+                <div class="modal-body tip">
+                    您提交的求评价问题尚未获得回复！
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../files/com.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../files/lightGallery.js"></script>
+    <link rel="stylesheet" href="../files/lightGallery.css" />
+    <script type="text/javascript">
+        var projectId;
+        function deleteProject() {
+            postRemote("student/seekEluationServlet.do?flag=deleteProject2_2_1&projectId=" + projectId, "", deleteProjectCallback);
+        }
+
+        function deleteProjectCallback(result) {
+            if (result.return == true) {
+                showMsg("删除成功！", "success");
+
+                var t = setTimeout(goToProjectList, 500);
+            } else if (result.stateCode == 1) {
+                showMsg("未登录！", "error");
+            } else if (result.stateCode == 2) {
+                showMsg("已有评价，不能删除！", "error");
+            }
+        }
+
+        function goToProjectList() {
+            window.location.href = "wechatcustomprojectlist.html";
+        }
+
+        function getProjectDetail() {
+            postRemote("user/seekEluationServlet.do?flag=getCustomProjectDetail2_2_1&projectId=" + projectId, "", getProjectDetailCallback);
+        }
+
+        function getProjectDetailCallback(result) {
+            getProblem();
+
+            $(".projectName").html(result.projectName);
+            $(".projectLong").html(result.projectLong);
+            $(".activeForm").html(result.activeForm);
+            $(".category").html(result.category);
+            $(".roleName").html(result.roleName);
+            $(".workUnit").html(result.workUnit);
+            $(".workUnitBoss").html(result.workUnitBoss);
+            $(".workUnitPhone").html(result.workUnitPhone);
+            $(".projectTime").html(result.startTime + " 至 " + result.endTime);
+            $(".address").html(result.address);
+            $(".teamLeader").html(result.teamLeader);
+            $(".teamLeaderPhone").html(result.teamLeaderPhone);
+
+            $(".introductionBox .content").html(result.introduction);
+            var list = result.pictures;
+            var html = "";
+            for (var i = 0; i < list.length; i++) {
+                html += "<a data-src='" + list[i] + "' href='javscript:' style='background-image:url(" + list[i] + ")'><img src='" + list[i] + "'/></a>";
+            }
+            $(".picturesBox .content").html(html);
+
+            //初始化图片浏览插件
+            $(".picturesBox .content").lightGallery({
+                loop: true,
+                auto: true,
+                pause: 4000,
+                speed: 500,
+                lang: {
+                    allPhotos: '图片'
+                },
+            });
+        }
+
+        function getProblem() {
+            postRemote("user/seekEluationServlet.do?flag=getProblem2_2_1&projectId=" + projectId, "", getProblemCallback);
+        }
+
+        function getProblemCallback(result) {
+            if (result.comments == null || result.comments.length == 0) {
+                $("#answerProblemListBox").hide();
+                //如果学生登录就显示删除按钮
+                if (window.sessionStorage != null && sessionStorage.getItem("studentId") != null) {
+                    $(".deleteProjectBtnBox").show();
+                }
+                $("#unansweredModal").modal("show");
+                $(".tip").html("您的实践经历未推送给导师评价！");
+                return;
+            } else {
+                var isAnsered = false;
+                for (var x = 0; x < result.comments.length; x++) {
+                    if (result.comments[x].answer && result.comments[x].answer != "") {
+                        isAnsered = true;
+                        break;
+                    }
+                }
+                if (isAnsered == false) {
+                    //如果学生登录就显示删除按钮
+                    if (window.sessionStorage != null && sessionStorage.getItem("studentId") != null) {
+                        $(".deleteProjectBtnBox").show();
+                    }
+                    $("#answerProblemListBox").hide();
+                    $("#unansweredModal").modal("show");
+                    return;
+                }
+            }
+
+            //alert(result.comments);
+            var list = result.comments;
+            var html = "";
+            for (var i = 0; i < list.length; i++) {
+                if (!list[i].answer || list[i].answer == "") {
+                    continue;
+                }
+                if (list[i].type == 1) {
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb ptitle'>";
+                    html += "<span class='tag'>软实力</span>";
+                    html += "<span>问题：请导师对我的软实力进行评价？</span>";
+                    html += "</div>";
+
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb'>";
+                    html += "<div class='content'>";
+                    var problemArr = list[i].problem.split(",");
+                    var abilitysArr = list[i].abilitys.split(",");
+                    var answerArr = list[i].answer.split(",");
+                    for (var x = 0; x < answerArr.length; x++) {
+                        if (answerArr[x] == 0) {
+                            continue;
+                        }
+                        html += "<div class='tagItem'>";
+                        html += "<span class='tagName'>" + abilitysArr[x] + "</span>";
+                        html += "<span class='tagImg'>";
+                        for (var m = 1; m < 6; m++) {
+                            if (m <= answerArr[x]) {
+                                html += "<img src='../files/guaover.png'/>";
+                            } else {
+                                html += "<img src='../files/gua.png'/>";
+                            }
+                        }
+                        html += "</span>";
+                        html += "</div>";
+                    }
+                    html += "</div>";
+                    html += "</div>";
+                } else if (list[i].type == 2) {
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb ptitle'>";
+                    html += "<span class='tag'>专业能力</span>";
+                    html += "<span>问题：请导师对我的以下专业技能进行评价？（最多选择三项）</span>";
+                    html += "</div>";
+
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb'>";
+                    html += "<div class='content'>";
+                    var problemArr = list[i].problem.split(",");
+                    var abilitysArr = list[i].abilitys.split(",");
+                    var answerArr = list[i].answer.split(",");
+                    for (var x = 0; x < answerArr.length; x++) {
+                        if (answerArr[x] == 0) {
+                            continue;
+                        }
+                        html += "<div class='tagItem'>";
+                        html += "<span class='tagName'>" + abilitysArr[x] + "</span>";
+                        html += "<span class='tagImg'>";
+                        for (var m = 1; m < 6; m++) {
+                            if (m <= answerArr[x]) {
+                                html += "<img src='../files/guaover.png'/>";
+                            } else {
+                                html += "<img src='../files/gua.png'/>";
+                            }
+                        }
+                        html += "</span>";
+                        html += "</div>";
+                    }
+                    html += "</div>";
+                    html += "</div>";
+                } else if (list[i].type == 3) {
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb ptitle'>";
+                    html += "<span class='tag'>自定义</span>";
+                    html += "<span>问题：" + list[i].problem + "</span>";
+                    html += "</div>";
+                    html += "<div class='col-xs-12 col-sm-12 col-md-12 keyweb'>";
+                    html += "<div class='content'>" + list[i].answer + "</div>";
+                }
+            }
+
+            html += "<div class='signerBox'><span class='signerTel'>" + nvl(list[0].signerTel) + "</span><span class='signer'>" + nvl(list[0].signer) + "</span></div>";
+            $("#answerProblemListBox .content").html(html);
+        }
+
+        //广告
+        function getAdvertisement() {
+            //if (!glide)
+            postRemote("user/advertServlet.do?flag=getAdvertisement&block=10", "", getAdvertisementCallback);
+        }
+        //var glide;
+
+        function getAdvertisementCallback(result) {
+            var picUrl = result.adverts[0].picUrl;
+            var html = "<img src='" + picUrl + "' style='max-width:100%;'/>";
+            $(".banner").html(html);
+
+
+
+            //var URL = window.location.href;
+            //var imgSrc = URL.indexOf("/student/") > -1 || URL.indexOf("/teacher/") > -1 ? "../files/0.png" : "files/0.png";
+            //var html = "";
+            //var list = result.adverts;
+            //for (var i = 0; i < list.length; i++) {
+            //    html += "<li class='slider__item'>";
+            //    html += "<a target='_self' href='" + list[i].advertUrl + "' style='background-image:url(" + list[i].picUrl + ")'><img src='" + imgSrc + "' /></a>";
+            //    html += "</li>";
+            //}
+            ////alert(html);
+            //$(".slider ul").html(html);
+            //glide = $('.slider').glide();
+        }
+
+        //页面初始化
+        function pageInit() {
+            getAdvertisement();
+            var request = getRequest();
+            projectId = request["id"];
+            if (projectId == null) {
+                alert("无效参数！");
+                history.go(-1);
+            }
+
+            getProjectDetail();
+        }
+    </script>
+</body>
+</html>

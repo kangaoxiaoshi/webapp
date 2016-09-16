@@ -64,6 +64,7 @@ define([
 				return [tecInfo, stuMsg, tecProjects];	
 			},
 			onShow: function (data, data1, data2) {
+				
 				this.isCollected = data.isCollected;
 				var html = this.template(template, {
 					info: data,
@@ -153,22 +154,22 @@ define([
 
 				if (file) {
 					var options = {
-	          //url: config.gateway +'student/projectServlet.do?flag=uploadPicture',
-	          url: config.gateway +'teacher/teacherServlet.do?flag=uploadTeacherBg2_2_1',
-	          quality: 0.8, //图片质量限制
-	          data: {},
-	          onUpload: function (result) {            
-	           if (result && result.picUrl) {
-	           	
-	           		self.$('.js-background').css('background-image', 'url(' + result.picUrl + ')' );
-	           }
-	          },
-		        onError:onError 
-	        };
-	        //出错处理       
-	        function onError() {
-	        };
-	        new ImageUpload (file, options);
+			  //url: config.gateway +'student/projectServlet.do?flag=uploadPicture',
+			  url: config.gateway +'teacher/teacherServlet.do?flag=uploadTeacherBg2_2_1',
+			  quality: 0.8, //图片质量限制
+			  data: {},
+			  onUpload: function (result) {            
+			   if (result && result.picUrl) {
+				
+					self.$('.js-background').css('background-image', 'url(' + result.picUrl + ')' );
+			   }
+			  },
+				onError:onError 
+			};
+			//出错处理       
+			function onError() {
+			};
+			new ImageUpload (file, options);
 				}
 			},
 			markAction: function () {
@@ -180,7 +181,7 @@ define([
 						type: this.isCollected ? 2 : 1
 					},
 					success: function (data) {
-						if (data) {
+						if (data.stateCode) {
 							if (self.isCollected) {
 								// 前收藏点击取消收藏
 								self.$('.js-love').removeClass('active');
@@ -190,16 +191,23 @@ define([
 						}
 					}
 				});
+				// app.ajax({
+				// 	url: 'student/seekEluationServlet.do?flag=deleteProject2_2_1&projectId=1',
+				// 	data: {},
+				// 	success: function (data) {
+
+				// 	}
+				// })
 			},
 			loginAction: function () {
 				app.ajax({
-					url: 'teacher/loginRegisterServlet.do?flag=login',
+					url: 'student/loginRegisterServlet.do?flag=login',
 					data: {
-						'UserName': '13928985693',
-						'Password': '123456789' 
+						'UserName': '18318300811',
+						'Password': '12345678' 
 					},
-					success: function () {
-						console.info('success');
+					success: function (data, status, xhr) {
+						debugger;
 					}
 				})
 			}

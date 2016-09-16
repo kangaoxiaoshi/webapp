@@ -51,6 +51,7 @@ define([
         })
       } else if (ajaxs) {
         ajaxs.success = function (data, status, xhr) {
+
           view.onShow.apply(view, result);
         }
         app.ajax(ajaxs);
@@ -60,12 +61,17 @@ define([
       if (!params.data) {
         params.data = {};
       }
+      //params.url = "";
       params.url = config.gateway + params.url;
-      //params.url = "http://m.lechebang.cn/gateway/home/getHomeData";
-      params.type = params.type || 'post';
+      params.type = params.type || 'POST';
       params.timeout =  params.timeout || 10000;
       params.contentType= "application/x-www-form-urlencoded";  
       params.dataType = "json";
+      // params.headers = {
+      //   'cookie' : "JSESSIONID=1"
+      // };
+      //params.crossDomain= true;
+      //params.xhrFields = { withCredentials: true};
       return $.ajax(params);
     },
     goBack: function (url, options) {

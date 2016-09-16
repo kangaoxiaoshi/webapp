@@ -2,7 +2,7 @@ var config = {
   // 项目根路径
   baseUrl: 'webapp',
   assetRoot: '/webapp/asset/src/',
-  gateway: 'http://120.24.1.97/shibufangcao/',
+  gateway: 'http://120.24.1.97:80/shibufangcao/',
   routesList: [
     'index',
     'teacher/index',

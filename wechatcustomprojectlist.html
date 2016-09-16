@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>十步芳草 - 实践经历</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="www.keyweb.cn" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no;" />
+    <link href="../files/bootstrap.css" rel="stylesheet" />
+    <link href="../files/glide.css" rel="Stylesheet" />
+    <link href="../files/style.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../files/jquery.min.js"></script>
+    <script type="text/javascript" src="../files/bootstrap.js"></script>
+    <script type="text/javascript" src="../files/jquery.glide.js"></script>
+    <style>
+        body {
+            font-family: STXihei;
+            background: #f2f2f2;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tipImg" style="display:none; width:100%;background:url(../files/alpha.png);height:100%;position:absolute;left:0px;top:0px;z-index:99"></div>
+    <div class="banner" style="padding:10px;background:#f2f2f2;margin-top:0px">
+        <!-- <div class="slider">
+             <ul class="slider__wrapper">
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/1.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/2.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/3.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+                 <li class='slider__item'>
+                     <a style='background-image:url(../files/4.jpg)'><img src='../files/0.png' /></a>
+                 </li>
+             </ul>
+         </div>-->
+    </div>
+    <script>        //var banner = $('.slider').glide();</script>
+    <div class="container" style="">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 keyweb">
+
+                <div style="padding-top:15px;padding-bottom:15px;text-align:center;padding-left:10px;padding-right:10px"><input id="addProjectBtn" style="background:#10a82f;border:0px;width:100%" type="button" class="btn btn-primary" onclick="window.location.href='wechataddproblem.html'" value="导入实践经历" /></div>
+
+                <div id="wechatCustomProjectList"></div>
+                <div class="loadBtnBox" style="padding-left:10px;padding-right:10px"><input style="background:#10a82f;border:0px;width:100%" type="button" class="btn btn-primary" onclick="getProjectList()" value="加载更多" /></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../files/com.js"></script>
+    <script type="text/javascript">
+        var pageNum = 0;
+        var pageSize = 10;
+
+        function getProjectList() {
+            var request = getRequest();
+            var search = request["search"] == null ? "" : request["search"];
+            search = decodeURI(decodeURI(search));
+            $(".loadBtnBox .btn").attr("value", "加载中...");
+            $(".loadBtnBox .btn").attr("disabled", true);
+            pageNum++;
+            postRemote("student/seekEluationServlet.do?flag=getCustomProjectList2_2_1&pageNum=" + pageNum + "&pageSize=" + pageSize, {
+                search: search
+            }, getProjectListCallback);
+        }
+
+        function getProjectListCallback(result) {
+            $(".loadBtnBox .btn").attr("value", "加载更多");
+            $(".loadBtnBox .btn").attr("disabled", false);
+            var list = result.projects;
+            if (!list) {
+                doStudentLogin()
+            }
+
+            if (list.length == 0 || list.length < pageSize) {
+                //alert("已经加载全部");
+                $(".loadBtnBox .btn").attr("value", "已经加载全部");
+                $(".loadBtnBox .btn").attr("disabled", true);
+                if (pageNum == 1 && list.length == 0) {
+                    $(".loadBtnBox .btn").attr("value", "0条实践记录");
+                }
+            }
+            var html = "<ul id='list-" + pageNum + "'>";
+            for (var i = 0; i < list.length; i++) {
+                html += "<li>";
+                html += "<div class='topItem'>";
+
+                html += "<div class='imgBox'><a href='wechatcustomprojectdetail.html?id=" + list[i].projectId + "'><img onerror='nopic()' src='" + list[i].companyLogo + "'/></a></div>";
+
+                html += "<div class='titleBox'>";
+                html += "<div class='leftPadding'>";
+                html += "<div class='title'><a href='wechatcustomprojectdetail.html?id=" + list[i].projectId + "'>" + list[i].projectName + "</a></div>";
+                html += "<div class='rightTxt'>" + formatStatus(list[i].status) + "</div>";
+
+                html += "<div class='centerTxt'>" + list[i].introduction + "</div>";
+
+                html += "</div>";
+                html += "</div>";
+
+                html += "<div class='bottomItem'>";
+
+                html += "<div class='typeTxt'><span>" + list[i].type + "</span></div>";
+                html += "<div class='timeBox'>";
+                html += "<div class='leftPadding'>";
+                html += "<span class='time'>" + list[i].createTime + "</span>";
+                html += "<a class='btn btn-primary' id='qpjBtn-" + i + "' href='wechataddproblem.html?id=" + list[i].projectId + "'>求评价</a>";
+                html += "<a class='btn btn-default' style='color:#999;border-color:#999' href='wechatcustomprojectdetail.html?id=" + list[i].projectId + "'>查看评价</a>";
+                html += "</div>";
+                html += "</div>";
+
+                html += "</div>";
+                html += "</li>";
+            }
+            html += "</ul>";
+            $("#wechatCustomProjectList").append(html);
+            $("#list-" + pageNum).fadeIn();
+
+
+            tipCount--;
+            if (tipCount == 0)
+                loadTip();
+        }
+
+        function doStudentLogin() {
+            var request = getRequest();
+            var UserName = request["UserName"] == null ? "" : request["UserName"];
+            var Password = request["Password"] == null ? "" : request["Password"];
+            if (UserName == "" || Password == "") {
+                alert("用户名或密码不能为空！");
+                return;
+            } else {
+                postRemote("student/loginRegisterServlet.do?flag=login", { UserName: UserName, Password: Password }, studentLoginCallback);
+            }
+        }
+        //登录回调函数
+        function studentLoginCallback(result) {
+
+            if (result.stateCode == 1) {
+                showMsg("账户不存在！", "error");
+            } else if (result.stateCode == 2) {
+                showMsg("密码错误！", "error");
+            } else if (result.stateCode == 0) {
+                //showMsg("登录成功！", "success");
+                sessionStorage.clear();
+                sessionStorage.setItem("studentId", nvl(result.studentId));
+                sessionStorage.setItem("name", nvl(result.name, "未命名"));
+                sessionStorage.setItem("level", nvl(result.level));
+                sessionStorage.setItem("projectCount", nvl(result.projectCount));
+                sessionStorage.setItem("projectLong", nvl(result.projectLong));
+                sessionStorage.setItem("avatar", nvl(result.avatar));
+                getProjectList();
+            }
+        }
+        //广告
+        function getAdvertisement() {
+            //if (!glide)
+            postRemote("user/advertServlet.do?flag=getAdvertisement&block=10", "", getAdvertisementCallback);
+        }
+        //var glide;
+
+        function getAdvertisementCallback(result) {
+            var picUrl = result.adverts[0].picUrl;
+            var html = "<img src='" + picUrl + "' style='max-width:100%;'/>";
+            $(".banner").html(html);
+
+
+
+            //var URL = window.location.href;
+            //var imgSrc = URL.indexOf("/student/") > -1 || URL.indexOf("/teacher/") > -1 ? "../files/0.png" : "files/0.png";
+            //var html = "";
+            //var list = result.adverts;
+            //for (var i = 0; i < list.length; i++) {
+            //    html += "<li class='slider__item'>";
+            //    html += "<a target='_self' href='" + list[i].advertUrl + "' style='background-image:url(" + list[i].picUrl + ")'><img src='" + imgSrc + "' /></a>";
+            //    html += "</li>";
+            //}
+            ////alert(html);
+            //$(".slider ul").html(html);
+            //glide = $('.slider').glide();
+            //delCookie("qpjTip");
+            $(".banner img").load(function () {
+                tipCount--;
+                if (tipCount == 0)
+                    loadTip();
+            });
+
+
+        }
+        var tipCount = 2;
+        function loadTip() {
+            //alert();
+            if (!getCookie("qpjTip")) {
+                //setCookie("qpjTip") = "true";
+                showTip();
+                $(window).resize(function () { showTip(); });
+
+            }
+        }
+
+
+        function showTip() {
+            var addBtnX = $("#addProjectBtn").offset().left;
+            var addBtnY = $("#addProjectBtn").offset().top;
+            var addBtnW = $("#addProjectBtn").innerWidth();
+            var addBtnH = $("#addProjectBtn").innerHeight();
+
+            var addBtnDiv = "<div style='position:absolute;text-align:center;border-radius:5px;background:#10a82f;color:#fff;font-size:16px;left:" + addBtnX + "px;top:" + addBtnY + "px;z-index:999;width:" + addBtnW + "px;height:" + addBtnH + "px;line-height:" + addBtnH + "px'>导入实践经历</div>";
+            var addTip = "<img src='../files/addTip.png' style='position:absolute;display:block;left:0px;top:" + (addBtnY + addBtnH) + "px;width:100%;'/>";
+            $("#tipImg").html("");
+            $("#tipImg").append(addBtnDiv + addTip);
+
+            if ($("#qpjBtn-0").offset()) {
+                var qpjBtnX = $("#qpjBtn-0").offset().left;
+                var qpjBtnY = $("#qpjBtn-0").offset().top;
+                var qpjBtnW = $("#qpjBtn-0").innerWidth();
+                var qpjBtnH = $("#qpjBtn-0").innerHeight();
+
+                var qpjBtnDiv = "<div style='position:absolute;text-align:center;border-radius:5px;background:#ffa130;color:#fff;font-size:12px;left:" + qpjBtnX + "px;top:" + qpjBtnY + "px;z-index:999;width:" + (qpjBtnW + 2) + "px;height:" + (qpjBtnH + 2) + "px;line-height:" + (qpjBtnH + 2) + "px'>求评价</div>";
+
+                var qpjTip = "<img src='../files/qpjTip.png' style='position:absolute;display:block;left:0px;top:" + (qpjBtnY + qpjBtnH / 2) + "px;width:100%;'/>";
+                $("#tipImg").append(qpjBtnDiv + qpjTip);
+            }
+            $("#tipImg").height($(document).height());
+            $("#tipImg").show();
+            $("#tipImg").click(function () {
+                $("#tipImg").hide();
+            });
+            setCookie("qpjTip") = "true";
+        }
+
+        //页面初始化
+        function pageInit() {
+            pageNum = 0;
+            $("#wechatCustomProjectList").html("");
+
+            getAdvertisement();
+
+            if (sessionStorage == null || sessionStorage.getItem("studentId") == null) {
+                doStudentLogin();
+            } else {
+                getProjectList();
+            }
+        }
+    </script>
+</body>
+</html>

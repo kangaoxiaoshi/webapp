@@ -11,7 +11,8 @@ require.config({
   },
   urlArgs: Date.now(),
   paths: {
-    'zepto': 'h5/lib/zepto',
+    //'zepto': 'h5/lib/zepto',
+    'zepto': 'h5/lib/jquery.min',
     'ImageUpload': 'h5/widget/imgUpload',
     'underscore': 'h5/lib/underscore',
     'util': 'h5/widget/util',

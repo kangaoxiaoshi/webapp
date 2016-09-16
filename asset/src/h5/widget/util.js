@@ -14,7 +14,8 @@ define(function () {
       while (match = searchReg.exec(query)) {
         name = match[1];
         value = match[2];
-        ret[name] = $.zepto.deserializeValue(decodeURIComponent(value));
+        // ret[name] = $.zepto.deserializeValue(decodeURIComponent(value));
+        ret[name] = decodeURIComponent(value);
       }
 
       return ret;
